@@ -1,0 +1,38 @@
+-- CreateTable
+CREATE TABLE `Read` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `content` VARCHAR(1000) NOT NULL,
+    `from` VARCHAR(200) NOT NULL,
+    `level` INTEGER NOT NULL DEFAULT 0,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `WrongWord` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `word` VARCHAR(100) NOT NULL,
+    `userId` INTEGER NOT NULL,
+    `solved` BOOLEAN NOT NULL DEFAULT false,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updatedAt` DATETIME(3) NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Score` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `score` INTEGER NOT NULL,
+    `userId` INTEGER NOT NULL,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- AddForeignKey
+ALTER TABLE `WrongWord` ADD CONSTRAINT `WrongWord_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `User`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Score` ADD CONSTRAINT `Score_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `User`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;

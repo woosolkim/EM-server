@@ -8,6 +8,15 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { UsersResolver } from './users/users.resolver';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 import { UserService } from './users/user.service';
+import { ReadsResolver } from './reads/reads.resolver';
+import { ReadsService } from './reads/reads.service';
+import { ReadsController } from './reads/reads.controller';
+import { WrongwordController } from './wrongword/wrongword.controller';
+import { WrongwordService } from './wrongword/wrongword.service';
+import { WrongwordResolver } from './wrongword/wrongword.resolver';
+import { ScoresResolver } from './scores/scores.resolver';
+import { ScoresService } from './scores/scores.service';
+import { ScoresController } from './scores/scores.controller';
 
 @Module({
   imports: [
@@ -18,7 +27,24 @@ import { UserService } from './users/user.service';
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),
   ],
-  controllers: [AppController, UsersController],
-  providers: [AppService, PrismaService, UserService, UsersResolver],
+  controllers: [
+    AppController,
+    UsersController,
+    ReadsController,
+    WrongwordController,
+    ScoresController,
+  ],
+  providers: [
+    AppService,
+    PrismaService,
+    UserService,
+    UsersResolver,
+    ReadsResolver,
+    ReadsService,
+    WrongwordService,
+    WrongwordResolver,
+    ScoresResolver,
+    ScoresService,
+  ],
 })
 export class AppModule {}
