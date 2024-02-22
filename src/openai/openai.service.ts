@@ -30,7 +30,7 @@ export class OpenAIService {
         messages: [
           { role: 'user', content: `${prompts[level]} Topic: ${topic}.` },
         ],
-        model: 'gpt-3.5-turbo',
+        model: 'gpt-4',
       });
 
       const content = chatCompletion.choices[0].message.content;
