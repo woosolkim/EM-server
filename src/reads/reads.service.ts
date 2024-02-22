@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { OpenAIService } from 'src/openai/openai.service';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { Read } from './read.model';
+import { getTodayStartKST, getTomorrowStartKST } from 'src/utils/date.tuils';
 
 @Injectable()
 export class ReadsService {
@@ -44,5 +45,20 @@ export class ReadsService {
       console.log(error);
       return null;
     }
+  }
+
+  async getTodaysReadingByLevel(level: number): Promise<Read[]> {
+    const today = getTodayStartKST();
+    const tomorrow = getTomorrowStartKST();
+
+    return this.prismaService.read.findMany({
+      where: {
+        level,
+        createdAt: {
+          gte: today,
+          lte: tomorrow,
+        },
+      },
+    });
   }
 }
