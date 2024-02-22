@@ -16,4 +16,7 @@ export class Read {
 
   @Field(() => String)
   from: string;
+
+  @Field(() => String)
+  topic: string;
 }

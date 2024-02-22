@@ -10,13 +10,13 @@ import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin
 import { UserService } from './users/user.service';
 import { ReadsResolver } from './reads/reads.resolver';
 import { ReadsService } from './reads/reads.service';
-import { ReadsController } from './reads/reads.controller';
 import { WrongwordController } from './wrongword/wrongword.controller';
 import { WrongwordService } from './wrongword/wrongword.service';
 import { WrongwordResolver } from './wrongword/wrongword.resolver';
 import { ScoresResolver } from './scores/scores.resolver';
 import { ScoresService } from './scores/scores.service';
 import { ScoresController } from './scores/scores.controller';
+import { OpenAIService } from './openai/openai.service';
 
 @Module({
   imports: [
@@ -30,7 +30,6 @@ import { ScoresController } from './scores/scores.controller';
   controllers: [
     AppController,
     UsersController,
-    ReadsController,
     WrongwordController,
     ScoresController,
   ],
@@ -45,6 +44,7 @@ import { ScoresController } from './scores/scores.controller';
     WrongwordResolver,
     ScoresResolver,
     ScoresService,
+    OpenAIService,
   ],
 })
 export class AppModule {}
