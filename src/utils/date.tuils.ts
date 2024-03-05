@@ -17,3 +17,10 @@ export function getTomorrowStartKST() {
   tomorrowKST.setHours(0, 0, 0, 0);
   return tomorrowKST;
 }
+
+export function getWeekAgoStartKST() {
+  const weekAgo = getKSTDate();
+  weekAgo.setDate(weekAgo.getDate() - 7);
+  weekAgo.setHours(0, 0, 0, 0);
+  return weekAgo;
+}
