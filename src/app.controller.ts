@@ -9,4 +9,9 @@ export class AppController {
   getHello(): Promise<{ message: string; date: string }> {
     return this.appService.getHello();
   }
+
+  @Get('/hello2')
+  getHello2(): Promise<{ message: string; date: string }> {
+    return this.appService.getHello2();
+  }
 }

@@ -12,4 +12,13 @@ export class AppService {
       }, 1500);
     });
   }
+
+  async getHello2(): Promise<{ message: string; date: string }> {
+    return new Promise((resolve) => {
+      resolve({
+        message: 'Hello World!',
+        date: new Date().toISOString(),
+      });
+    });
+  }
 }
